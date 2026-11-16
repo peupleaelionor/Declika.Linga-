@@ -1,0 +1,181 @@
+@import "@fontsource-variable/geist/wght.css";
+@import "tailwindcss";
+
+@theme {
+  --color-paper: #fafafa;
+  --color-card: #ffffff;
+  --color-ink: #0a1128;
+  --color-navy: #0a1128;
+  --color-muted: #445066;
+  --color-mint: #64ffda;
+  --color-line: #e4e7ee;
+  --color-line-strong: #cfd4de;
+  --font-sans: "Geist Variable", "Geist", ui-sans-serif, system-ui, sans-serif;
+  --shadow-sheet: 0 1px 2px rgb(10 17 40 / 0.04), 0 24px 48px rgb(10 17 40 / 0.06);
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background: var(--color-paper);
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+    font-size: 1.0625rem;
+    line-height: 1.5;
+    text-rendering: optimizeLegibility;
+  }
+
+  button:not(:disabled),
+  [role="button"]:not(:disabled),
+  summary {
+    cursor: pointer;
+  }
+
+  summary::-webkit-details-marker {
+    display: none;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-ink);
+    outline-offset: 3px;
+  }
+
+  ::selection {
+    background: var(--color-mint);
+    color: var(--color-ink);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+}
+
+.hero-glow {
+  position: absolute;
+  top: 12%;
+  right: 2%;
+  height: 34rem;
+  width: 34rem;
+  background: radial-gradient(
+    closest-side,
+    color-mix(in oklab, var(--color-mint) 78%, white),
+    transparent 70%
+  );
+  opacity: 0.45;
+  filter: blur(48px);
+  pointer-events: none;
+}
+
+@media (max-width: 767px) {
+  .hero-glow {
+    top: -2rem;
+    right: -6rem;
+    height: 20rem;
+    width: 20rem;
+    opacity: 0.4;
+  }
+}
+
+@utility text-display {
+  font-size: clamp(2.6rem, 1.15rem + 4.6vw, 5.15rem);
+  line-height: 0.98;
+  letter-spacing: -0.045em;
+  font-weight: 600;
+  text-wrap: balance;
+}
+
+@utility text-title {
+  font-size: clamp(2rem, 1.3rem + 2.2vw, 3.5rem);
+  line-height: 1.08;
+  letter-spacing: -0.035em;
+  font-weight: 600;
+  text-wrap: balance;
+}
+
+.btn {
+  display: inline-flex;
+  min-height: 3rem;
+  align-items: center;
+  justify-content: center;
+  border-radius: 999px;
+  padding-inline: 1.25rem;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  letter-spacing: -0.011em;
+  text-align: center;
+  transition:
+    background-color 200ms cubic-bezier(0.22, 1, 0.36, 1),
+    color 200ms cubic-bezier(0.22, 1, 0.36, 1),
+    border-color 200ms cubic-bezier(0.22, 1, 0.36, 1),
+    transform 150ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.btn:active {
+  transform: scale(0.98);
+}
+
+.btn-primary {
+  background: var(--color-mint);
+  color: var(--color-ink);
+}
+
+.btn-primary:hover {
+  background: var(--color-ink);
+  color: var(--color-paper);
+}
+
+.btn-ghost {
+  border: 1px solid var(--color-line-strong);
+  background: transparent;
+  color: var(--color-ink);
+}
+
+.btn-ghost:hover {
+  border-color: var(--color-ink);
+}
+
+.on-navy .btn-ghost {
+  border-color: color-mix(in oklab, var(--color-paper) 32%, transparent);
+  color: var(--color-paper);
+}
+
+.on-navy .btn-ghost:hover {
+  background: var(--color-paper);
+  color: var(--color-ink);
+}
+
+details[open] .faq-plus {
+  transform: rotate(45deg);
+}
+
+.faq-plus {
+  transition: transform 200ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.skip-link {
+  position: absolute;
+  left: 1rem;
+  top: -4rem;
+  z-index: 50;
+  border-radius: 999px;
+  background: var(--color-ink);
+  color: var(--color-paper);
+  padding: 0.75rem 1rem;
+}
+
+.skip-link:focus {
+  top: 1rem;
+}
