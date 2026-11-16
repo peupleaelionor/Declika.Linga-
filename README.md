@@ -17,7 +17,9 @@ Page de vente des règles de cognats, du français vers l’anglais.
 
 Chaque valeur est une URL `https://buy.stripe.com/…` ou `https://checkout.stripe.com/…`.
 
-Dans Stripe : Produits → Payment Links, un lien par offre, téléchargement du fichier après paiement. Coller l’URL dans Vercel, pas dans le code.
+Dans Stripe : Produits → Payment Links, un lien par offre. Pour la liste PDF, joins le fichier `deliverables/Declika-Liste-Complete.pdf` au Payment Link, afin qu’il parte juste après le paiement. Ne le publie pas sur le site : l’adresse serait publique.
+
+Coller l’URL du Payment Link dans Vercel, pas dans le code.
 
 Sans ces variables, les boutons d’achat ramènent à la section Tarifs. Ils ne pointent pas vers un faux paiement.
 

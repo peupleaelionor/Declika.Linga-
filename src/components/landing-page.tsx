@@ -123,8 +123,8 @@ function ProductCard({
       id={product.id}
       className={
         navy
-          ? "on-navy flex h-full flex-col rounded-2xl bg-navy p-8 text-paper md:p-10"
-          : "flex h-full flex-col rounded-2xl border border-line bg-card p-8 md:p-10"
+          ? "on-navy flex h-full flex-col rounded-2xl bg-navy p-6 text-paper sm:p-8 md:p-10"
+          : "flex h-full flex-col rounded-2xl border border-line bg-card p-6 sm:p-8 md:p-10"
       }
     >
       <div className={cover ? "grid h-full items-start gap-8 sm:grid-cols-[11.5rem_1fr]" : "flex h-full flex-col"}>
@@ -194,17 +194,17 @@ function ProductCard({
 
 const quiz = [
   {
-    prompt: "Quelle terminaison anglaise correspond généralement à « -té » en français ?",
+    prompt: "« -té » en français devient généralement quoi en anglais ?",
     options: ["-ty", "-tion", "-ous"],
     answer: 0,
   },
   {
-    prompt: "« -tion » en français devient souvent quoi en anglais ?",
+    prompt: "« -tion » reste généralement comment ?",
     options: ["-tion", "-ty", "-ous"],
     answer: 0,
   },
   {
-    prompt: "« -eux » devient généralement :",
+    prompt: "« -eux » devient généralement quoi ?",
     options: ["-ous", "-ty", "-tion"],
     answer: 0,
   },
@@ -213,13 +213,12 @@ const quiz = [
 const quizNote =
   "C’est exactement le type de règle que tu trouves dans la liste complète (10 règles + exceptions).";
 
-function MethodQuiz({ checkout }: { checkout: string }) {
+function MethodQuiz() {
   const [step, setStep] = useState(0);
   const [picked, setPicked] = useState<number | null>(null);
   const question = quiz[step];
   const answered = picked !== null;
   const correct = picked === question.answer;
-  const last = step === quiz.length - 1;
 
   return (
     <div className="mt-16 max-w-2xl rounded-2xl border border-line bg-paper p-6 md:p-8">
@@ -260,11 +259,7 @@ function MethodQuiz({ checkout }: { checkout: string }) {
               : `Non. C’est « ${question.options[question.answer]} ».`}
           </p>
           <p className="mt-2 max-w-xl text-pretty text-muted">{quizNote}</p>
-          {last ? (
-            <BuyLink href={checkout} className="mt-6 w-full sm:w-auto">
-              Obtenir la liste complète
-            </BuyLink>
-          ) : (
+          {step < quiz.length - 1 ? (
             <button
               type="button"
               className="btn btn-ghost mt-6 w-full sm:w-auto"
@@ -275,7 +270,7 @@ function MethodQuiz({ checkout }: { checkout: string }) {
             >
               Question suivante
             </button>
-          )}
+          ) : null}
         </div>
       ) : null}
     </div>
@@ -457,10 +452,13 @@ export function LandingPage() {
               « Qualité » ne devient pas « qualty ». Une règle ouvre la famille ; le PDF
               marque les écarts d’orthographe.
             </p>
-            <MethodQuiz checkout={pdf.checkout} />
+            <MethodQuiz />
             <p className="mt-8 max-w-2xl text-pretty text-lg">
               Ces 3 règles ne sont qu’un extrait. La liste complète en contient 10, classées par efficacité + les exceptions.
             </p>
+            <BuyLink href={pdf.checkout} className="mt-6 w-full sm:w-auto">
+              Obtenir la liste complète
+            </BuyLink>
           </div>
         </section>
 
