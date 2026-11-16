@@ -427,14 +427,14 @@ export function LandingPage() {
               </p>
             </Reveal>
 
-            <div className="mt-16 grid gap-12 md:grid-cols-3 md:gap-10">
+            <div className="mt-20 grid gap-16 md:grid-cols-3 md:gap-16 lg:gap-20">
               {rules.map((rule, index) => (
                 <Reveal key={rule.index} delay={index * 0.05}>
-                  <article className="border-t border-ink pt-6">
+                  <article className="border-t border-ink pt-8">
                     <p className="text-sm font-medium text-muted">{rule.index}</p>
-                    <h3 className="mt-4 text-2xl font-semibold tracking-tight">{rule.title}</h3>
-                    <p className="mt-3 text-pretty text-muted">{rule.text}</p>
-                    <ul className="mt-8 divide-y divide-line border-t border-line">
+                    <h3 className="mt-5 text-2xl font-semibold tracking-tight">{rule.title}</h3>
+                    <p className="mt-4 text-pretty text-muted">{rule.text}</p>
+                    <ul className="mt-10 divide-y divide-line border-t border-line">
                       {rule.pairs.map(([fr, en]) => (
                         <li key={fr} className="flex items-baseline justify-between gap-4 py-3">
                           <span className="font-medium">{fr}</span>
@@ -446,18 +446,21 @@ export function LandingPage() {
                 </Reveal>
               ))}
             </div>
-            <p className="mt-12 max-w-2xl text-sm text-muted">
-              « Qualité » ne devient pas « qualty ». Une règle ouvre la famille ; le PDF
-              marque les écarts d’orthographe.
-            </p>
-            <MethodQuiz checkout={pdf.checkout} />
             <img
               src="/methode-croissance.jpg"
               alt="Apprendre la règle, l’appliquer, puis relier les finales. La reconnaissance progresse."
               width={1375}
               height={829}
-              className="mt-16 w-full"
+              className="mt-20 w-full"
             />
+            <p className="mt-12 max-w-2xl text-sm text-muted">
+              « Qualité » ne devient pas « qualty ». Une règle ouvre la famille ; le PDF
+              marque les écarts d’orthographe.
+            </p>
+            <MethodQuiz checkout={pdf.checkout} />
+            <p className="mt-8 max-w-2xl text-pretty text-lg">
+              Ces 3 règles ne sont qu’un extrait. La liste complète en contient 10, classées par efficacité + les exceptions.
+            </p>
           </div>
         </section>
 
