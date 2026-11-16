@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { ArrowRight, Check, Menu, X } from "lucide-react";
+import { Check, Menu, X } from "lucide-react";
 import { Logo } from "@/components/logo";
 import { Reveal } from "@/components/reveal";
 import {
@@ -108,35 +108,6 @@ function Header() {
   );
 }
 
-function Specimen() {
-  const rule = rules[1];
-
-  return (
-    <div className="rounded-2xl border border-line bg-card p-8 shadow-sheet md:p-10">
-      <div className="flex items-baseline justify-between gap-4 text-sm font-medium text-muted">
-        <p>Règle {rule.index} · extrait</p>
-        <p>FR → EN</p>
-      </div>
-      <div className="mt-10 flex flex-wrap items-center gap-4">
-        <p className="text-4xl font-semibold tracking-tight sm:text-5xl">-té</p>
-        <span className="grid size-12 shrink-0 place-items-center rounded-full bg-mint text-ink" aria-hidden>
-          <ArrowRight className="size-5" strokeWidth={2.25} />
-        </span>
-        <p className="text-4xl font-semibold tracking-tight sm:text-5xl">-ty</p>
-      </div>
-      <p className="mt-6 max-w-sm text-pretty text-muted">{rule.text}</p>
-      <ul className="mt-8 divide-y divide-line border-t border-line">
-        {rule.pairs.map(([fr, en]) => (
-          <li key={fr} className="flex items-baseline justify-between gap-6 py-3">
-            <span className="font-medium">{fr}</span>
-            <span className="text-muted">{en}</span>
-          </li>
-        ))}
-      </ul>
-    </div>
-  );
-}
-
 function ProductCard({
   product,
 }: {
@@ -152,7 +123,7 @@ function ProductCard({
       id={product.id}
       className={
         navy
-          ? "on-navy flex h-full flex-col rounded-2xl bg-navy p-8 text-paper ring-2 ring-mint md:p-10"
+          ? "on-navy flex h-full flex-col rounded-2xl bg-navy p-8 text-paper md:p-10"
           : "flex h-full flex-col rounded-2xl border border-line bg-card p-8 md:p-10"
       }
     >
@@ -170,7 +141,7 @@ function ProductCard({
           <p
             className={
               navy
-                ? "w-fit rounded-full bg-mint px-3 py-1 text-sm font-semibold text-ink"
+                ? "w-fit rounded-full border border-paper/25 px-2.5 py-0.5 text-xs font-medium text-paper/80"
                 : "text-sm font-medium text-muted"
             }
           >
@@ -211,10 +182,7 @@ function ProductCard({
             <p className={navy ? "mt-1 text-sm text-paper/75" : "mt-1 text-sm text-muted"}>
               Paiement unique
             </p>
-            <BuyLink
-              href={product.checkout}
-              className={navy ? "btn-emphasis mt-6 w-full" : "mt-6 w-full"}
-            >
+            <BuyLink href={product.checkout} className="mt-6 w-full">
               {product.cta}
             </BuyLink>
           </div>
@@ -320,12 +288,10 @@ function LanguageCard({ language }: { language: string }) {
   const id = `alerte-${language}`;
 
   return (
-    <li className="flex flex-col rounded-xl border border-line bg-card px-4 py-4">
+    <li className="flex flex-col rounded-lg border border-line bg-paper px-3 py-3">
       <div className="flex items-center justify-between gap-2">
-        <p className="font-medium">{language}</p>
-        <p className="shrink-0 rounded-full border border-line px-2 py-0.5 text-xs font-medium text-muted">
-          Bientôt
-        </p>
+        <p className="text-sm text-muted">{language}</p>
+        <p className="shrink-0 text-xs text-muted">Bientôt</p>
       </div>
       {done ? (
         <p className="mt-4 text-sm text-muted">C’est noté.</p>
@@ -378,46 +344,30 @@ export function LandingPage() {
       </a>
       <Header />
       <main id="contenu">
-        <section className="relative overflow-hidden">
-          <div
-            aria-hidden
-            className="hero-glow"
-          />
-          <div className="relative mx-auto grid max-w-6xl items-center gap-16 px-5 py-24 md:grid-cols-12 md:px-8 md:py-32">
-            <div className="md:col-span-7">
-              <p className="inline-flex items-center gap-2 text-sm font-medium">
-                <span className="size-1.5 rounded-full bg-mint" aria-hidden />
-                La méthode qui explose le vocabulaire
-              </p>
-              <h1 className="text-display mt-6 max-w-3xl">
-                Les règles qui te font gagner des milliers de mots
-              </h1>
-              <p className="mt-6 max-w-xl text-pretty text-lg leading-relaxed text-muted">
-                Declika te donne les règles simples de cognats pour passer du français à
-                l’anglais (et bientôt d’autres langues) en quelques secondes.
-              </p>
-              <div className="mt-10 flex flex-col gap-3 sm:flex-row">
-                <BuyLink href={pdf.checkout} className="w-full sm:w-auto">
-                  {pdf.cta}
-                </BuyLink>
-                <a href="#methode" className="btn btn-ghost w-full sm:w-auto">
-                  Voir la méthode
-                </a>
-              </div>
-              <p className="mt-5 text-sm text-muted">
-                Liste complète · {euros(pdf.price)} · paiement unique
-              </p>
+        <section className="relative">
+          <div className="relative mx-auto max-w-3xl px-5 py-28 md:px-8 md:py-40">
+            <p className="inline-flex items-center gap-2 text-sm font-medium">
+              <span className="size-1.5 rounded-full bg-mint" aria-hidden />
+              La méthode qui explose le vocabulaire
+            </p>
+            <h1 className="text-display mt-8">
+              Les règles qui te font gagner des milliers de mots
+            </h1>
+            <p className="mt-8 max-w-xl text-pretty text-lg leading-relaxed text-muted">
+              Declika te donne les règles simples de cognats pour passer du français à
+              l’anglais (et bientôt d’autres langues) en quelques secondes.
+            </p>
+            <div className="mt-12 flex flex-col gap-3 sm:flex-row">
+              <BuyLink href={pdf.checkout} className="w-full sm:w-auto">
+                {pdf.cta}
+              </BuyLink>
+              <a href="#methode" className="btn btn-ghost w-full sm:w-auto">
+                Voir la méthode
+              </a>
             </div>
-            <div className="md:col-span-5">
-              <img
-                src="/hero-mark.png"
-                alt=""
-                width={480}
-                height={475}
-                className="mb-8 w-40 md:w-52"
-              />
-              <Specimen />
-            </div>
+            <p className="mt-6 text-sm text-muted">
+              Liste complète · {euros(pdf.price)} · paiement unique
+            </p>
           </div>
         </section>
 
@@ -592,15 +542,15 @@ export function LandingPage() {
           </div>
         </section>
 
-        <section className="border-t border-line px-5 py-16 md:px-8 md:py-20" aria-labelledby="avenir-title">
+        <section className="px-5 py-10 md:px-8" aria-labelledby="avenir-title">
           <div className="mx-auto max-w-6xl">
-            <h2 id="avenir-title" className="text-2xl font-semibold tracking-tight">
+            <h2 id="avenir-title" className="text-sm font-medium text-muted">
               L’avenir de Declika
             </h2>
-            <p className="mt-3 max-w-xl text-pretty text-muted">
+            <p className="mt-1 max-w-xl text-sm text-muted">
               L’anglais est notre point de départ. D’autres langues arrivent.
             </p>
-            <ul className="mt-8 grid gap-3 sm:grid-cols-2 lg:grid-cols-5">
+            <ul className="mt-4 grid gap-2 sm:grid-cols-2 lg:grid-cols-5">
               {upcomingLanguages.map((language) => (
                 <LanguageCard key={language} language={language} />
               ))}
