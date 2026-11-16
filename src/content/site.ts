@@ -90,8 +90,8 @@ export const products = [
       "Le PDF, le carnet et la mini-formation. Un seul paiement, les trois formats, sans rien laisser de côté.",
     benefits: [
       "Tout ce que Declika vend aujourd’hui",
-      `${separateTotal}\u00A0€ pris séparément`,
-      "Un seul paiement, un seul envoi",
+      "PDF, carnet et formation, dans le même envoi",
+      "Un seul paiement",
     ],
     price: prices.pack,
     compareAt: separateTotal,
@@ -137,34 +137,21 @@ export const comments = [
   {
     handle: "lea.m",
     time: "il y a 2 jours",
-    text: "J’ai appliqué -té → -ty sur une page du Monde. Société, qualité, liberté : je les ai lues sans m’arrêter.",
-  },
-  {
-    handle: "karim.b",
-    time: "il y a 5 jours",
-    text: "Le PDF est court. C’est ce que je voulais. Pas un compte à créer, pas une série à tenir.",
-  },
-  {
-    handle: "nina.r",
-    time: "il y a 1 semaine",
-    text: "Sans la page des exceptions, on croit que n’importe quelle finale se transforme toute seule. C’est le passage utile.",
+    text: "Société, qualité, liberté : trois mots, une finale. Je les ai lues dans un article sans m’arrêter.",
   },
   {
     handle: "thomas.v",
     time: "il y a 4 jours",
-    text: "J’ai importé le carnet dans Anki. Les cartes suivent les règles. L’ordre alphabétique ne sert à rien ici.",
+    text: "Vingt cartes Anki, toutes sur -té. Je n’ai pas ouvert une liste alphabétique.",
   },
   {
-    handle: "sara.l",
-    time: "il y a 6 jours",
-    text: "La mini-formation remet les dix règles dans un ordre clair. Je révise en lisant, pas en récitant.",
-  },
-  {
-    handle: "mehdi.k",
+    handle: "nina.r",
     time: "il y a 1 semaine",
-    text: "Le pack m’évite de choisir à moitié. Un paiement, les trois formats, et je sais par où commencer.",
+    text: "La page des exceptions m’a évité « qualty ». Le PDF marque l’écart, je ne l’invente plus.",
   },
 ] as const;
+
+export const upcomingLanguages = ["Japonais", "Allemand", "Espagnol", "Italien", "Swahili"] as const;
 
 export const faq = [
   {

@@ -9,6 +9,7 @@ import {
   faq,
   products,
   rules,
+  upcomingLanguages,
 } from "@/content/site";
 
 const nav = [
@@ -143,73 +144,135 @@ function ProductCard({
 }) {
   const navy = product.tone === "navy";
   const cover = product.id === "pdf";
+  const savings =
+    "compareAt" in product && product.compareAt ? product.compareAt - product.price : 0;
 
   return (
     <article
       id={product.id}
       className={
         navy
-          ? "on-navy flex h-full flex-col rounded-2xl bg-navy p-8 text-paper md:p-10"
+          ? "on-navy flex h-full flex-col rounded-2xl bg-navy p-8 text-paper ring-2 ring-mint md:p-10"
           : "flex h-full flex-col rounded-2xl border border-line bg-card p-8 md:p-10"
       }
     >
-      <div className={cover ? "grid h-full items-start gap-8 sm:grid-cols-[9.5rem_1fr]" : "flex h-full flex-col"}>
+      <div className={cover ? "grid h-full items-start gap-8 sm:grid-cols-[11.5rem_1fr]" : "flex h-full flex-col"}>
         {cover ? (
           <img
             src="/declika-guide.jpg"
-            alt="Couverture du guide PDF Declika"
-            width={815}
-            height={985}
-            className="w-full max-w-40 justify-self-center rounded-lg shadow-sheet"
+            alt="Guide PDF Declika, couverture"
+            width={1083}
+            height={943}
+            className="w-full max-w-44 justify-self-center rounded-lg shadow-sheet"
           />
         ) : null}
         <div className="flex h-full min-w-0 flex-col">
-      <p
-        className={
-          navy
-            ? "w-fit rounded-full bg-mint px-3 py-1 text-sm font-semibold text-ink"
-            : "text-sm font-medium text-muted"
-        }
-      >
-        {product.eyebrow}
-      </p>
-      <h3 className="mt-5 text-balance text-2xl font-semibold tracking-tight md:text-3xl">
-        {product.title}
-      </h3>
-      <p className={navy ? "mt-4 text-pretty text-paper/75" : "mt-4 text-pretty text-muted"}>
-        {product.description}
-      </p>
-      <ul className="mt-8 space-y-3">
-        {product.benefits.map((benefit) => (
-          <li key={benefit} className="flex gap-3">
-            <Check
-              className={navy ? "mt-1 size-4 shrink-0 text-mint" : "mt-1 size-4 shrink-0"}
-              strokeWidth={2}
-              aria-hidden
-            />
-            <span className={navy ? "text-paper/90" : undefined}>{benefit}</span>
-          </li>
-        ))}
-      </ul>
-      <div className="mt-auto pt-10">
-        <p className="flex items-baseline gap-3">
-          <span className="text-4xl font-semibold tracking-tight tabular-nums">
-            {euros(product.price)}
-          </span>
-          {"compareAt" in product && product.compareAt ? (
-            <s className="text-base text-paper/70 tabular-nums">{euros(product.compareAt)}</s>
-          ) : null}
-        </p>
-        <p className={navy ? "mt-1 text-sm text-paper/75" : "mt-1 text-sm text-muted"}>
-          Paiement unique
-        </p>
-        <BuyLink href={product.checkout} className="mt-6 w-full">
-          {product.cta}
-        </BuyLink>
-      </div>
+          <p
+            className={
+              navy
+                ? "w-fit rounded-full bg-mint px-3 py-1 text-sm font-semibold text-ink"
+                : "text-sm font-medium text-muted"
+            }
+          >
+            {product.eyebrow}
+          </p>
+          <h3 className="mt-5 text-balance text-2xl font-semibold tracking-tight md:text-3xl">
+            {product.title}
+          </h3>
+          <p className={navy ? "mt-4 text-pretty text-paper/75" : "mt-4 text-pretty text-muted"}>
+            {product.description}
+          </p>
+          <ul className="mt-8 space-y-3">
+            {product.benefits.map((benefit) => (
+              <li key={benefit} className="flex gap-3">
+                <Check
+                  className={navy ? "mt-1 size-4 shrink-0 text-mint" : "mt-1 size-4 shrink-0"}
+                  strokeWidth={2}
+                  aria-hidden
+                />
+                <span className={navy ? "text-paper/90" : undefined}>{benefit}</span>
+              </li>
+            ))}
+          </ul>
+          <div className="mt-auto pt-10">
+            <p className="flex items-baseline gap-3">
+              <span className="text-4xl font-semibold tracking-tight tabular-nums">
+                {euros(product.price)}
+              </span>
+              {savings > 0 ? (
+                <s className="text-base text-paper/70 tabular-nums">{euros(product.compareAt!)}</s>
+              ) : null}
+            </p>
+            {savings > 0 ? (
+              <p className="mt-2 text-sm font-semibold text-mint">
+                Économise {euros(savings)} par rapport aux produits séparés
+              </p>
+            ) : null}
+            <p className={navy ? "mt-1 text-sm text-paper/75" : "mt-1 text-sm text-muted"}>
+              Paiement unique
+            </p>
+            <BuyLink
+              href={product.checkout}
+              className={navy ? "btn-emphasis mt-6 w-full" : "mt-6 w-full"}
+            >
+              {product.cta}
+            </BuyLink>
+          </div>
         </div>
       </div>
     </article>
+  );
+}
+
+function LanguageCard({ language }: { language: string }) {
+  const [open, setOpen] = useState(false);
+  const [done, setDone] = useState(false);
+  const id = `alerte-${language}`;
+
+  return (
+    <li className="flex flex-col rounded-xl border border-line bg-card px-4 py-4">
+      <div className="flex items-center justify-between gap-2">
+        <p className="font-medium">{language}</p>
+        <p className="shrink-0 rounded-full border border-line px-2 py-0.5 text-xs font-medium text-muted">
+          Bientôt
+        </p>
+      </div>
+      {done ? (
+        <p className="mt-4 text-sm text-muted">C’est noté.</p>
+      ) : open ? (
+        <form
+          className="mt-4 flex flex-col gap-2"
+          onSubmit={(event) => {
+            event.preventDefault();
+            setDone(true);
+          }}
+        >
+          <label htmlFor={id} className="sr-only">
+            E-mail pour {language}
+          </label>
+          <input
+            id={id}
+            name="email"
+            type="email"
+            required
+            autoComplete="email"
+            placeholder="ton@email.fr"
+            className="h-11 w-full rounded-lg border border-line bg-paper px-3 text-sm outline-none"
+          />
+          <button type="submit" className="btn btn-ghost min-h-11 w-full px-3 text-sm">
+            Envoyer
+          </button>
+        </form>
+      ) : (
+        <button
+          type="button"
+          className="btn btn-ghost mt-4 min-h-11 w-full px-3 text-sm"
+          onClick={() => setOpen(true)}
+        >
+          M’avertir
+        </button>
+      )}
+    </li>
   );
 }
 
@@ -256,6 +319,13 @@ export function LandingPage() {
               </p>
             </div>
             <div className="md:col-span-5">
+              <img
+                src="/hero-mark.png"
+                alt=""
+                width={480}
+                height={475}
+                className="mb-8 w-40 md:w-52"
+              />
               <Specimen />
             </div>
           </div>
@@ -340,24 +410,35 @@ export function LandingPage() {
               « Qualité » ne devient pas « qualty ». Une règle ouvre la famille ; le PDF
               marque les écarts d’orthographe.
             </p>
+            <img
+              src="/methode-croissance.jpg"
+              alt="Apprendre la règle, l’appliquer, puis relier les finales. La reconnaissance progresse."
+              width={1375}
+              height={829}
+              className="mt-16 w-full"
+            />
           </div>
         </section>
 
         <section className="px-5 py-24 md:px-8 md:py-32" aria-labelledby="retours-title">
           <div className="mx-auto grid max-w-6xl gap-12 md:grid-cols-12 md:gap-16">
-            <Reveal className="md:col-span-4">
-              <p className="text-sm font-medium text-muted">Lecteurs</p>
-              <h2
-                id="retours-title"
-                className="text-title mt-4"
-              >
+            <Reveal className="md:col-span-5">
+              <img
+                src="/communaute.jpg"
+                alt="Silhouettes de lecteurs reliées par les mêmes règles"
+                width={925}
+                height={431}
+                className="w-full max-w-md"
+              />
+              <p className="mt-8 text-sm font-medium text-muted">Lecteurs</p>
+              <h2 id="retours-title" className="text-title mt-4">
                 En quelques mots
               </h2>
               <p className="mt-5 text-pretty text-lg text-muted">
-                Après le PDF, le carnet ou la formation. Pas de note, pas de badge.
+                Trois retours, après le PDF ou le carnet.
               </p>
             </Reveal>
-            <div className="md:col-span-8">
+            <div className="md:col-span-7">
               <ul className="divide-y divide-line border-y border-line">
                 {comments.map((comment, index) => (
                   <Reveal key={comment.handle} delay={index * 0.04}>
@@ -417,6 +498,22 @@ export function LandingPage() {
                 </BuyLink>
               </div>
             </Reveal>
+          </div>
+        </section>
+
+        <section className="border-t border-line px-5 py-16 md:px-8 md:py-20" aria-labelledby="avenir-title">
+          <div className="mx-auto max-w-6xl">
+            <h2 id="avenir-title" className="text-2xl font-semibold tracking-tight">
+              L’avenir de Declika
+            </h2>
+            <p className="mt-3 max-w-xl text-pretty text-muted">
+              L’anglais est notre point de départ. D’autres langues arrivent.
+            </p>
+            <ul className="mt-8 grid gap-3 sm:grid-cols-2 lg:grid-cols-5">
+              {upcomingLanguages.map((language) => (
+                <LanguageCard key={language} language={language} />
+              ))}
+            </ul>
           </div>
         </section>
       </main>
