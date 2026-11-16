@@ -224,6 +224,96 @@ function ProductCard({
   );
 }
 
+const quiz = [
+  {
+    prompt: "Quelle terminaison anglaise correspond généralement à « -té » en français ?",
+    options: ["-ty", "-tion", "-ous"],
+    answer: 0,
+  },
+  {
+    prompt: "« -tion » en français devient souvent quoi en anglais ?",
+    options: ["-tion", "-ty", "-ous"],
+    answer: 0,
+  },
+  {
+    prompt: "« -eux » devient généralement :",
+    options: ["-ous", "-ty", "-tion"],
+    answer: 0,
+  },
+] as const;
+
+const quizNote =
+  "C’est exactement le type de règle que tu trouves dans la liste complète (10 règles + exceptions).";
+
+function MethodQuiz({ checkout }: { checkout: string }) {
+  const [step, setStep] = useState(0);
+  const [picked, setPicked] = useState<number | null>(null);
+  const question = quiz[step];
+  const answered = picked !== null;
+  const correct = picked === question.answer;
+  const last = step === quiz.length - 1;
+
+  return (
+    <div className="mt-16 max-w-2xl rounded-2xl border border-line bg-paper p-6 md:p-8">
+      <p className="text-sm font-medium text-muted">
+        Question {step + 1} sur {quiz.length}
+      </p>
+      <h3 className="mt-3 text-2xl font-semibold tracking-tight">Teste la méthode</h3>
+      <p className="mt-6 text-pretty text-lg font-medium">{question.prompt}</p>
+      <div className="mt-6 grid gap-3 sm:grid-cols-3" role="group" aria-label={question.prompt}>
+        {question.options.map((option, index) => {
+          const isAnswer = index === question.answer;
+          const isPicked = index === picked;
+          const tone = answered && isAnswer
+            ? "border-ink bg-mint"
+            : answered && isPicked
+              ? "border-ink bg-card"
+              : "border-line bg-card hover:border-ink";
+          return (
+            <button
+              key={option}
+              type="button"
+              disabled={answered}
+              onClick={() => setPicked(index)}
+              aria-pressed={isPicked}
+              className={`min-h-12 rounded-xl border px-4 py-3 text-left text-base font-semibold ${tone}`}
+            >
+              {option}
+              {answered && isAnswer ? <span className="sr-only">, bonne réponse</span> : null}
+            </button>
+          );
+        })}
+      </div>
+      {answered ? (
+        <div className="mt-6">
+          <p className="font-medium">
+            {correct
+              ? `Oui. C’est « ${question.options[question.answer]} ».`
+              : `Non. C’est « ${question.options[question.answer]} ».`}
+          </p>
+          <p className="mt-2 max-w-xl text-pretty text-muted">{quizNote}</p>
+          {last ? (
+            <BuyLink href={checkout} className="mt-6 w-full sm:w-auto">
+              Obtenir la liste complète
+            </BuyLink>
+          ) : (
+            <button
+              type="button"
+              className="btn btn-ghost mt-6 w-full sm:w-auto"
+              onClick={() => {
+                setStep((value) => value + 1);
+                setPicked(null);
+              }}
+            >
+              Question suivante
+            </button>
+          )}
+        </div>
+      ) : null}
+    </div>
+  );
+}
+
 function LanguageCard({ language }: { language: string }) {
   const [open, setOpen] = useState(false);
   const [done, setDone] = useState(false);
@@ -410,6 +500,7 @@ export function LandingPage() {
               « Qualité » ne devient pas « qualty ». Une règle ouvre la famille ; le PDF
               marque les écarts d’orthographe.
             </p>
+            <MethodQuiz checkout={pdf.checkout} />
             <img
               src="/methode-croissance.jpg"
               alt="Apprendre la règle, l’appliquer, puis relier les finales. La reconnaissance progresse."
