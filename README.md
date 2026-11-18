@@ -17,19 +17,21 @@ Page de vente des règles de cognats, du français vers l’anglais.
 
 Chaque valeur est une URL `https://buy.stripe.com/…` ou `https://checkout.stripe.com/…`.
 
-Dans Stripe : Produits → Payment Links, un lien par offre. Joins le fichier au lien, il part après le paiement. Ne publie pas ces fichiers sur le site.
+Dans Stripe, pour chaque Payment Link :
 
-| Offre | Fichier |
+1. Joindre le fichier de l’offre. Il part par e-mail après le paiement. Ne le publie pas sur le site.
+2. Après le paiement, rediriger vers `https://TON-DOMAINE/merci`.
+
+| Offre | Fichier à joindre |
 | --- | --- |
 | Liste PDF | `deliverables/Declika-Liste-Complete.pdf` |
 | Carnet Anki / Quizlet | `deliverables/Declika-Carnet.csv` |
 | Mini-formation | `deliverables/Declika-Mini-formation.pdf` |
-| Bonus du pack | `deliverables/Declika-Bonus.pdf` |
-| Pack | les quatre fichiers |
+| Pack | les trois fichiers ci-dessus, plus `deliverables/Declika-Bonus.pdf` |
 
 Anki : Fichier → Importer, séparateur virgule, colonnes Français / Anglais / Règle. Quizlet : importer le même CSV.
 
-Coller l’URL du Payment Link dans Vercel, pas dans le code.
+Coller l’URL du Payment Link dans Vercel, pas dans le code. Redéployer après avoir ajouté les variables : Vite les lit au moment du build.
 
 Sans ces variables, les boutons d’achat ramènent à la section Tarifs. Ils ne pointent pas vers un faux paiement.
 

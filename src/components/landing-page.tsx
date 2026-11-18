@@ -180,7 +180,7 @@ function ProductCard({
               </p>
             ) : null}
             <p className={navy ? "mt-1 text-sm text-paper/75" : "mt-1 text-sm text-muted"}>
-              Paiement unique
+              Paiement unique · TTC
             </p>
             <BuyLink href={product.checkout} className="mt-6 w-full">
               {product.cta}
@@ -367,7 +367,7 @@ export function LandingPage() {
               </a>
             </div>
             <p className="mt-6 text-sm text-muted">
-              Liste complète · {euros(pdf.price)} · paiement unique
+              Liste complète · 17 pages · {euros(pdf.price)} · paiement unique, TTC
             </p>
           </div>
         </section>
@@ -380,8 +380,8 @@ export function LandingPage() {
                 Un principe, quatre formats
               </h2>
               <p className="mt-5 max-w-2xl text-pretty text-lg text-muted">
-                Le PDF porte la méthode. Le carnet la fait répéter. La formation la met
-                en ordre. Le pack réunit les trois.
+                Le PDF porte la méthode. Le carnet la fait répéter. La formation la fait
+                retrouver. Le pack ajoute les faux amis.
               </p>
             </Reveal>
 
@@ -454,6 +454,9 @@ export function LandingPage() {
               height={829}
               className="mt-20 w-full"
             />
+            <p className="mt-3 max-w-2xl text-sm text-muted">
+              Lire la règle, l’appliquer, puis relier les finales. Le schéma est en anglais. Le geste est le même.
+            </p>
             <p className="mt-12 max-w-2xl text-sm text-muted">
               « Qualité » ne devient pas « qualty ». Une règle ouvre la famille ; le PDF
               marque les écarts d’orthographe.
@@ -591,6 +594,7 @@ export function LandingPage() {
               <a className="font-medium text-ink hover:underline" href={`mailto:${contactEmail}`}>
                 {contactEmail}
               </a>
+              <p className="mt-2">Remboursement sous 14 jours si le fichier n’a pas été utilisé.</p>
               <p className="mt-2">© 2026 Declika</p>
             </div>
           </div>

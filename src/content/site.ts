@@ -71,11 +71,11 @@ export const products = [
     eyebrow: "Offre principale",
     title: "Liste PDF complète",
     description:
-      "Dix finales, les écarts, et les mots fréquents. Un document dense, fait pour être relu.",
+      "17 pages. Une finale par page, son origine, les mots fréquents, les écarts. C’est un PDF, pas une vidéo.",
     benefits: [
-      "Dix finales, de la plus fidèle à la plus fine",
-      "Paires français → anglais, classées par règle",
-      "Les exceptions, isolées, pour ne pas brouiller le geste",
+      "Dix finales, une page chacune",
+      "Les écarts nommés, pour ne pas inventer l’orthographe",
+      "Un index, pour retrouver la page d’un mot",
     ],
     price: prices.pdf,
     cta: "Obtenir la liste complète",
@@ -87,10 +87,10 @@ export const products = [
     eyebrow: "Meilleure offre",
     title: "Pack complet",
     description:
-      "Le PDF, le carnet et la mini-formation. Un seul paiement, les trois formats, sans rien laisser de côté.",
+      "La liste, 222 cartes, la formation, et le bonus faux amis. Quatre fichiers, un seul paiement.",
     benefits: [
-      "Tout ce que Declika vend aujourd’hui",
-      "Bonus inclus : faux amis et lectures annotées",
+      "Tout ce que Declika vend, bonus compris",
+      "Le bonus n’est pas vendu seul",
       "Un seul paiement",
     ],
     price: prices.pack,
@@ -104,11 +104,11 @@ export const products = [
     eyebrow: "Révision",
     title: "Carnet Anki / Quizlet",
     description:
-      "Les mêmes paires que le PDF, rangées par règle, prêtes à importer. Le document explique. Le carnet fait répéter.",
+      "222 cartes, les mêmes paires que la liste, dans un fichier CSV. Tu l’importes dans Anki ou dans Quizlet.",
     benefits: [
-      "Un paquet prêt pour Anki",
-      "Le même paquet pour Quizlet",
-      "Cartes rangées par finale, pas par ordre alphabétique",
+      "Colonnes Français, Anglais, Règle",
+      "Le même fichier pour Anki et pour Quizlet",
+      "Classées par finale, pas par ordre alphabétique",
     ],
     price: prices.anki,
     cta: "Obtenir le carnet",
@@ -120,11 +120,11 @@ export const products = [
     eyebrow: "Parcours",
     title: "Mini-formation « 1000 mots en 10 règles »",
     description:
-      "Dix finales, dans l’ordre où elles rapportent le plus, avec des exercices de reconnaissance. Ce n’est pas un cours d’oral.",
+      "15 pages. Dix exercices à remplir, le corrigé seulement à la fin. Un PDF, pas une vidéo, pas un cours d’oral.",
     benefits: [
-      "Un ordre de lecture, pas une pile de fiches",
-      "Des exercices courts, sur des mots nouveaux",
-      "Le même geste, à refaire en lisant un texte",
+      "Une page par finale, avec la ligne pour répondre",
+      "Le piège de chaque finale, indiqué sur la page",
+      "Le corrigé après les dix exercices",
     ],
     price: prices.formation,
     cta: "Obtenir la formation",
@@ -165,15 +165,15 @@ export const faq = [
   },
   {
     q: "Le carnet reprend-il le PDF ?",
-    a: "Oui. Les mêmes paires, triées par règle, prêtes pour Anki et pour Quizlet. Le PDF explique le geste. Le carnet le répète.",
+    a: "Oui. 222 paires, les mêmes que la liste, dans un CSV. Anki : Fichier, Importer, séparateur virgule. Quizlet : importer ce même fichier. Le PDF explique. Le carnet répète.",
   },
   {
     q: "Que couvre la mini-formation ?",
-    a: "Dix finales, dans un ordre qui compte, avec des exercices de reconnaissance. Tu n’y apprendras pas à tenir une conversation.",
+    a: "Un PDF de 15 pages : dix exercices, le piège de chaque finale, le corrigé à la fin. Ce n’est pas une vidéo, et tu n’y apprendras pas à tenir une conversation.",
   },
   {
     q: "Comment reçoit-on les fichiers ?",
-    a: "Juste après le paiement, par un lien de téléchargement. Selon l’offre : le PDF, les cartes, la formation, ou les trois. Le tout se lit sur téléphone et sur ordinateur.",
+    a: "Stripe envoie le lien par e-mail, juste après le paiement. Liste : un PDF. Carnet : un CSV. Formation : un PDF. Pack : ces trois fichiers, plus le bonus. Regarde aussi les indésirables. Tout s’ouvre sur téléphone et sur ordinateur.",
   },
   {
     q: "L’application est-elle incluse dans le pack ?",
