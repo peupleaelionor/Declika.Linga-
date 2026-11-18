@@ -24,7 +24,8 @@ Dans Stripe : Produits → Payment Links, un lien par offre. Joins le fichier au
 | Liste PDF | `deliverables/Declika-Liste-Complete.pdf` |
 | Carnet Anki / Quizlet | `deliverables/Declika-Carnet.csv` |
 | Mini-formation | `deliverables/Declika-Mini-formation.pdf` |
-| Pack | les trois fichiers |
+| Bonus du pack | `deliverables/Declika-Bonus.pdf` |
+| Pack | les quatre fichiers |
 
 Anki : Fichier → Importer, séparateur virgule, colonnes Français / Anglais / Règle. Quizlet : importer le même CSV.
 

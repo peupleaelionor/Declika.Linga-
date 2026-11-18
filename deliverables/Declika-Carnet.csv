@@ -4,49 +4,220 @@ attention,attention,-tion
 éducation,education,-tion
 information,information,-tion
 tradition,tradition,-tion
+solution,solution,-tion
+révolution,revolution,-tion
+fonction,function,-tion
+action,action,-tion
+condition,condition,-tion
+direction,direction,-tion
+production,production,-tion
+protection,protection,-tion
+situation,situation,-tion
+relation,relation,-tion
+communication,communication,-tion
+motivation,motivation,-tion
+opération,operation,-tion
+définition,definition,-tion
+constitution,constitution,-tion
+institution,institution,-tion
+génération,generation,-tion
+population,population,-tion
+position,position,-tion
 capitalisme,capitalism,-isme
 réalisme,realism,-isme
 optimisme,optimism,-isme
 tourisme,tourism,-isme
 journalisme,journalism,-isme
+socialisme,socialism,-isme
+féminisme,feminism,-isme
+mécanisme,mechanism,-isme
+organisme,organism,-isme
+nationalisme,nationalism,-isme
+modernisme,modernism,-isme
+symbolisme,symbolism,-isme
+racisme,racism,-isme
+communisme,communism,-isme
+héroïsme,heroism,-isme
+pragmatisme,pragmatism,-isme
+absolutisme,absolutism,-isme
+cubisme,cubism,-isme
+impressionnisme,impressionism,-isme
+fascisme,fascism,-isme
 artiste,artist,-iste
 journaliste,journalist,-iste
 spécialiste,specialist,-iste
 dentiste,dentist,-iste
 pianiste,pianist,-iste
-importance,importance,"-ance, -ence"
-différence,difference,"-ance, -ence"
-patience,patience,"-ance, -ence"
-violence,violence,"-ance, -ence"
-présence,presence,"-ance, -ence"
+guitariste,guitarist,-iste
+économiste,economist,-iste
+touriste,tourist,-iste
+capitaliste,capitalist,-iste
+socialiste,socialist,-iste
+idéaliste,idealist,-iste
+nationaliste,nationalist,-iste
+terroriste,terrorist,-iste
+violoniste,violinist,-iste
+cycliste,cyclist,-iste
+linguiste,linguist,-iste
+chimiste,chemist,-iste
+biologiste,biologist,-iste
+généraliste,generalist,-iste
+portraitiste,portraitist,-iste
+importance,importance,-ance / -ence
+différence,difference,-ance / -ence
+patience,patience,-ance / -ence
+violence,violence,-ance / -ence
+présence,presence,-ance / -ence
+distance,distance,-ance / -ence
+absence,absence,-ance / -ence
+conscience,conscience,-ance / -ence
+intelligence,intelligence,-ance / -ence
+influence,influence,-ance / -ence
+science,science,-ance / -ence
+silence,silence,-ance / -ence
+évidence,evidence,-ance / -ence
+conférence,conference,-ance / -ence
+conséquence,consequence,-ance / -ence
+existence,existence,-ance / -ence
+expérience,experience,-ance / -ence
+référence,reference,-ance / -ence
+résistance,resistance,-ance / -ence
+excellence,excellence,-ance / -ence
 musique,music,-ique
 logique,logic,-ique
-publique,public,-ique
 électrique,electric,-ique
+électronique,electronic,-ique
 magique,magic,-ique
 spécifique,specific,-ique
+classique,classic,-ique
+tragique,tragic,-ique
+automatique,automatic,-ique
+systématique,systematic,-ique
+identique,identical,-ique
+dramatique,dramatic,-ique
+civique,civic,-ique
+poétique,poetic,-ique
+organique,organic,-ique
+comique,comic,-ique
+dynamique,dynamic,-ique
+ironique,ironic,-ique
 énergie,energy,-ie
 économie,economy,-ie
 géographie,geography,-ie
 industrie,industry,-ie
 technologie,technology,-ie
+philosophie,philosophy,-ie
+biologie,biology,-ie
+théorie,theory,-ie
+catégorie,category,-ie
+démocratie,democracy,-ie
+géométrie,geometry,-ie
+poésie,poetry,-ie
+harmonie,harmony,-ie
+mélodie,melody,-ie
+stratégie,strategy,-ie
+tragédie,tragedy,-ie
+comédie,comedy,-ie
+ironie,irony,-ie
+psychologie,psychology,-ie
+anatomie,anatomy,-ie
+colonie,colony,-ie
+académie,academy,-ie
+photographie,photography,-ie
+aristocratie,aristocracy,-ie
 ordinaire,ordinary,-aire
 vocabulaire,vocabulary,-aire
 salaire,salary,-aire
 primaire,primary,-aire
-sanitaire,sanitary,-aire
+secondaire,secondary,-aire
+contraire,contrary,-aire
+nécessaire,necessary,-aire
+militaire,military,-aire
+volontaire,voluntary,-aire
+temporaire,temporary,-aire
+littéraire,literary,-aire
+imaginaire,imaginary,-aire
+élémentaire,elementary,-aire
+dictionnaire,dictionary,-aire
+commentaire,commentary,-aire
+préliminaire,preliminary,-aire
+planétaire,planetary,-aire
+solaire,solar,-aire
+populaire,popular,-aire
+similaire,similar,-aire
+circulaire,circular,-aire
+culinaire,culinary,-aire
+documentaire,documentary,-aire
+légendaire,legendary,-aire
 liberté,liberty,-té
 qualité,quality,-té
 société,society,-té
 activité,activity,-té
 réalité,reality,-té
+identité,identity,-té
+sécurité,security,-té
+difficulté,difficulty,-té
+responsabilité,responsibility,-té
+université,university,-té
+curiosité,curiosity,-té
+possibilité,possibility,-té
+nationalité,nationality,-té
+personnalité,personality,-té
+cité,city,-té
+beauté,beauty,-té
+clarté,clarity,-té
+pureté,purity,-té
+unité,unity,-té
+diversité,diversity,-té
+densité,density,-té
+quantité,quantity,-té
+égalité,equality,-té
+autorité,authority,-té
 sérieux,serious,-eux
 fameux,famous,-eux
 dangereux,dangerous,-eux
 nerveux,nervous,-eux
 curieux,curious,-eux
+furieux,furious,-eux
+religieux,religious,-eux
+généreux,generous,-eux
+précieux,precious,-eux
+nombreux,numerous,-eux
+courageux,courageous,-eux
+joyeux,joyous,-eux
+mystérieux,mysterious,-eux
+spacieux,spacious,-eux
+ambitieux,ambitious,-eux
+délicieux,delicious,-eux
+prestigieux,prestigious,-eux
+anxieux,anxious,-eux
+envieux,envious,-eux
+glorieux,glorious,-eux
+studieux,studious,-eux
+judicieux,judicious,-eux
+harmonieux,harmonious,-eux
+victorieux,victorious,-eux
 acteur,actor,-eur
 directeur,director,-eur
 créateur,creator,-eur
 professeur,professor,-eur
 docteur,doctor,-eur
+inventeur,inventor,-eur
+éditeur,editor,-eur
+auteur,author,-eur
+spectateur,spectator,-eur
+opérateur,operator,-eur
+inspecteur,inspector,-eur
+protecteur,protector,-eur
+ambassadeur,ambassador,-eur
+empereur,emperor,-eur
+erreur,error,-eur
+terreur,terror,-eur
+faveur,favor,-eur
+honneur,honor,-eur
+odeur,odor,-eur
+vigueur,vigor,-eur
+rigueur,rigor,-eur
+splendeur,splendor,-eur
+moteur,motor,-eur
+générateur,generator,-eur

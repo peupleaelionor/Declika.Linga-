@@ -71,7 +71,7 @@ export const products = [
     eyebrow: "Offre principale",
     title: "Liste PDF complète",
     description:
-      "Les règles, les mots fréquents et les exceptions. Un document court, fait pour être relu plutôt que survolé.",
+      "Dix finales, les écarts, et les mots fréquents. Un document dense, fait pour être relu.",
     benefits: [
       "Dix finales, de la plus fidèle à la plus fine",
       "Paires français → anglais, classées par règle",
@@ -90,7 +90,7 @@ export const products = [
       "Le PDF, le carnet et la mini-formation. Un seul paiement, les trois formats, sans rien laisser de côté.",
     benefits: [
       "Tout ce que Declika vend aujourd’hui",
-      "PDF, carnet et formation, dans le même envoi",
+      "Bonus inclus : faux amis et lectures annotées",
       "Un seul paiement",
     ],
     price: prices.pack,
@@ -177,7 +177,7 @@ export const faq = [
   },
   {
     q: "L’application est-elle incluse dans le pack ?",
-    a: "Non. L’application n’est pas en vente. Le pack contient le PDF, le carnet et la mini-formation. Rien d’autre.",
+    a: "Non. L’application n’est pas en vente. Le pack contient le PDF, le carnet, la mini-formation et le bonus faux amis. Rien d’autre.",
   },
   {
     q: "Et si le format ne me convient pas ?",
