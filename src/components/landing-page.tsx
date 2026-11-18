@@ -289,12 +289,18 @@ function LanguageCard({ language }: { language: string }) {
         <p className="shrink-0 text-xs text-muted">Bientôt</p>
       </div>
       {done ? (
-        <p className="mt-4 text-sm text-muted">C’est noté.</p>
+        <p className="mt-4 text-sm text-muted">
+          Le message s’ouvre dans ta messagerie, à {contactEmail}.
+        </p>
       ) : open ? (
         <form
           className="mt-4 flex flex-col gap-2"
           onSubmit={(event) => {
             event.preventDefault();
+            const email = String(new FormData(event.currentTarget).get("email") || "");
+            const subject = encodeURIComponent(`Prévenez-moi — ${language}`);
+            const body = encodeURIComponent(`Langue : ${language}\nAdresse : ${email}`);
+            window.location.href = `mailto:${contactEmail}?subject=${subject}&body=${body}`;
             setDone(true);
           }}
         >
@@ -472,23 +478,20 @@ export function LandingPage() {
                 height={431}
                 className="w-full max-w-md"
               />
-              <p className="mt-8 text-sm font-medium text-muted">Lecteurs</p>
+              <p className="mt-8 text-sm font-medium text-muted">En usage</p>
               <h2 id="retours-title" className="text-title mt-4">
-                En quelques mots
+                Trois situations
               </h2>
               <p className="mt-5 text-pretty text-lg text-muted">
-                Trois retours, après le PDF ou le carnet.
+                La finale, dans un texte, dans un paquet de cartes, devant une exception.
               </p>
             </Reveal>
             <div className="md:col-span-7">
               <ul className="divide-y divide-line border-y border-line">
                 {comments.map((comment, index) => (
-                  <Reveal key={comment.handle} delay={index * 0.04}>
+                  <Reveal key={comment.label} delay={index * 0.04}>
                     <li className="grid gap-3 py-8 md:grid-cols-[9.5rem_1fr] md:gap-10">
-                      <div>
-                        <p className="font-medium">{comment.handle}</p>
-                        <p className="text-sm text-muted">{comment.time}</p>
-                      </div>
+                      <p className="font-medium">{comment.label}</p>
                       <p className="text-pretty text-lg leading-relaxed">{comment.text}</p>
                     </li>
                   </Reveal>

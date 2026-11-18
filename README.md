@@ -17,7 +17,16 @@ Page de vente des règles de cognats, du français vers l’anglais.
 
 Chaque valeur est une URL `https://buy.stripe.com/…` ou `https://checkout.stripe.com/…`.
 
-Dans Stripe : Produits → Payment Links, un lien par offre. Pour la liste PDF, joins le fichier `deliverables/Declika-Liste-Complete.pdf` au Payment Link, afin qu’il parte juste après le paiement. Ne le publie pas sur le site : l’adresse serait publique.
+Dans Stripe : Produits → Payment Links, un lien par offre. Joins le fichier au lien, il part après le paiement. Ne publie pas ces fichiers sur le site.
+
+| Offre | Fichier |
+| --- | --- |
+| Liste PDF | `deliverables/Declika-Liste-Complete.pdf` |
+| Carnet Anki / Quizlet | `deliverables/Declika-Carnet.csv` |
+| Mini-formation | `deliverables/Declika-Mini-formation.pdf` |
+| Pack | les trois fichiers |
+
+Anki : Fichier → Importer, séparateur virgule, colonnes Français / Anglais / Règle. Quizlet : importer le même CSV.
 
 Coller l’URL du Payment Link dans Vercel, pas dans le code.
 

@@ -135,19 +135,16 @@ export const products = [
 
 export const comments = [
   {
-    handle: "lea.m",
-    time: "il y a 2 jours",
-    text: "Société, qualité, liberté : trois mots, une finale. Je les ai lues dans un article sans m’arrêter.",
+    label: "En lisant",
+    text: "Société, qualité, liberté : trois mots, une finale. On les reconnaît sans s’arrêter sur chacun.",
   },
   {
-    handle: "thomas.v",
-    time: "il y a 4 jours",
-    text: "Vingt cartes Anki, toutes sur -té. Je n’ai pas ouvert une liste alphabétique.",
+    label: "Au carnet",
+    text: "Vingt cartes, toutes sur -té. L’ordre alphabétique ne sert pas : les cartes suivent la règle.",
   },
   {
-    handle: "nina.r",
-    time: "il y a 1 semaine",
-    text: "La page des exceptions m’a évité « qualty ». Le PDF marque l’écart, je ne l’invente plus.",
+    label: "Aux exceptions",
+    text: "Sans la page des exceptions, « qualité » devient « qualty ». Le PDF marque l’écart.",
   },
 ] as const;
 

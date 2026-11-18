@@ -77,7 +77,7 @@ RULES = [
             ("magique", "magic"),
             ("spécifique", "specific"),
         ],
-        "except": "Certains adjectifs prennent -ical : politique → political, économique → economic ou economical.",
+        "except": "Politique devient political. Économique devient economic. Economical veut dire « économe » : ce n’est pas le même mot.",
     },
     {
         "fr": "-ie",
@@ -154,7 +154,7 @@ class Liste(FPDF):
         self.set_font("Sans", "", 9)
         self.set_text_color(*MUTED)
         self.set_xy(18, 10)
-        self.cell(0, 6, "Declika  ·  Liste complète  ·  Français vers l’anglais")
+        self.cell(0, 6, "Declika  ·  Français vers l’anglais")
         self.set_draw_color(*LINE)
         self.line(18, 17, 192, 17)
         self.set_y(22)
@@ -275,7 +275,111 @@ def main():
     out.parent.mkdir(parents=True, exist_ok=True)
     pdf.output(out)
     print(out, out.stat().st_size)
+    write_carnet(out.parent)
+    write_formation(out.parent)
+
+
+EXERCISES = [
+    ("-tion", [("solution", "solution"), ("révolution", "revolution"), ("fonction", "function")]),
+    ("-isme", [("socialisme", "socialism"), ("féminisme", "feminism"), ("minimalisme", "minimalism")]),
+    ("-iste", [("guitariste", "guitarist"), ("économiste", "economist"), ("fleuriste", "florist")]),
+    ("-ance, -ence", [("distance", "distance"), ("conscience", "conscience"), ("absence", "absence")]),
+    ("-ique", [("classique", "classic"), ("tragique", "tragic"), ("fantastique", "fantastic")]),
+    ("-ie", [("philosophie", "philosophy"), ("biologie", "biology"), ("théorie", "theory")]),
+    ("-aire", [("secondaire", "secondary"), ("militaire", "military"), ("contraire", "contrary")]),
+    ("-té", [("identité", "identity"), ("sécurité", "security"), ("difficulté", "difficulty")]),
+    ("-eux", [("furieux", "furious"), ("religieux", "religious"), ("généreux", "generous")]),
+    ("-eur", [("inventeur", "inventor"), ("éditeur", "editor"), ("auteur", "author")]),
+]
+
+
+def write_carnet(folder: Path):
+    def cell(value: str) -> str:
+        if any(mark in value for mark in ",\"\n"):
+            return '"' + value.replace('"', '""') + '"'
+        return value
+
+    rows = ["Français,Anglais,Règle"]
+    for rule in RULES:
+        for french, english in rule["pairs"]:
+            rows.append(",".join(cell(part) for part in (french, english, rule["fr"])))
+    path = folder / "Declika-Carnet.csv"
+    path.write_text("\n".join(rows) + "\n", encoding="utf-8")
+    print(path, path.stat().st_size)
+
+
+def write_formation(folder: Path):
+    pdf = Liste(format="A4", unit="mm")
+    pdf.alias_nb_pages()
+    pdf.set_auto_page_break(auto=True, margin=18)
+    pdf.set_margins(18, 18, 18)
+    pdf.add_font("Sans", "", FONT)
+    pdf.add_font("Sans", "B", FONT_B)
+    pdf.add_page()
+
+    pdf.set_fill_color(*NAVY)
+    pdf.rect(0, 0, 210, 42, "F")
+    pdf.set_xy(18, 12)
+    pdf.set_text_color(255, 255, 255)
+    pdf.set_font("Sans", "B", 20)
+    pdf.cell(0, 9, "Declika", new_x="LMARGIN", new_y="NEXT")
+    pdf.set_x(18)
+    pdf.set_font("Sans", "", 12)
+    pdf.cell(0, 7, "Mini-formation  ·  1000 mots en 10 règles")
+
+    pdf.set_y(54)
+    pdf.set_text_color(*NAVY)
+    pdf.set_font("Sans", "B", 14)
+    pdf.multi_cell(0, 7, "Dix finales, dans l’ordre où elles rapportent.")
+    pdf.ln(1)
+    pdf.set_font("Sans", "", 11)
+    pdf.set_text_color(*MUTED)
+    pdf.multi_cell(
+        0,
+        6,
+        "Ce n’est pas un cours d’oral. Pour chaque finale : la règle, puis trois mots à reconnaître. "
+        "La réponse est juste dessous. Cache-la, réponds, puis vérifie. "
+        "Le détail des exceptions est dans la liste complète.",
+    )
+
+    for index, (ending, pairs) in enumerate(EXERCISES, start=1):
+        if pdf.get_y() > 240:
+            pdf.add_page()
+        pdf.ln(7)
+        pdf.set_font("Sans", "B", 13)
+        pdf.set_text_color(*NAVY)
+        pdf.multi_cell(0, 7, f"{index:02d}    {ending}")
+        pdf.set_x(18)
+        pdf.set_font("Sans", "", 11)
+        pdf.set_text_color(*MUTED)
+        pdf.multi_cell(0, 6, "Reconnais la finale, puis le mot anglais.")
+        for french, english in pairs:
+            y = pdf.get_y()
+            pdf.set_draw_color(*LINE)
+            pdf.line(22, y, 192, y)
+            pdf.set_xy(22, y + 1.2)
+            pdf.set_text_color(*NAVY)
+            pdf.cell(80, 7, french)
+            pdf.set_text_color(*MUTED)
+            pdf.cell(0, 7, english, new_x="LMARGIN", new_y="NEXT")
+        pdf.set_draw_color(*LINE)
+        pdf.line(22, pdf.get_y(), 192, pdf.get_y())
+
+    pdf.ln(10)
+    pdf.set_font("Sans", "", 11)
+    pdf.set_text_color(*MUTED)
+    pdf.multi_cell(
+        0,
+        6,
+        "Refais le geste sur un texte. Si le mot obtenu n’a pas de sens, ouvre l’exception dans la liste. "
+        "N’invente pas l’orthographe.",
+    )
+
+    path = folder / "Declika-Mini-formation.pdf"
+    pdf.output(path)
+    print(path, path.stat().st_size)
 
 
 if __name__ == "__main__":
     main()
+
