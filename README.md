@@ -2,6 +2,23 @@
 
 Page de vente des règles de cognats, du français vers l’anglais.
 
+## Après le paiement
+
+Les quatre Payment Links redirigent vers `https://declikalinga.vercel.app/merci?session_id={CHECKOUT_SESSION_ID}`.
+
+La page affiche les boutons du produit acheté seulement si le paiement est confirmé. Il faut pour cela la variable serveur `STRIPE_SECRET_KEY` (clé secrète `sk_live_…`, pas de préfixe `VITE_`). Sans elle, l’acheteur reçoit quand même les fichiers par l’e-mail Stripe.
+
+| Variable | Payment Link |
+| --- | --- |
+| `VITE_STRIPE_PDF` | `https://buy.stripe.com/9B6dR89dX4tz6Q74Ir8so02` |
+| `VITE_STRIPE_ANKI` | `https://buy.stripe.com/aFaeVccq9aRXeizdeX8so01` |
+| `VITE_STRIPE_FORMATION` | `https://buy.stripe.com/14AeVc61Le491vN5Mv8so03` |
+| `VITE_STRIPE_PACK` | `https://buy.stripe.com/fZuaEWcq97FLdev0sb8so00` |
+
+Le lien de la liste contient un `I` majuscule, pas un `l`. L’ancienne valeur renvoie une page Stripe introuvable.
+
+Le nom affiché en haut du paiement est le nom public du compte (`JEVALIS`), pas le nom du produit. Stripe ne laisse pas le changer par API. Dans le tableau de bord : Paramètres → Détails de l’entreprise → nom public `Declika`, et descripteur de relevé `DECLIKA`.
+
 ## Déployer sur Vercel
 
 1. Importer ce dépôt : [github.com/peupleaelionor/Declika.Linga-](https://github.com/peupleaelionor/Declika.Linga-).
