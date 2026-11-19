@@ -131,7 +131,7 @@ salaire,salary,-aire
 primaire,primary,-aire
 secondaire,secondary,-aire
 contraire,contrary,-aire
-nécessaire,necessary,-aire
+parlementaire,parliamentary,-aire
 militaire,military,-aire
 volontaire,voluntary,-aire
 temporaire,temporary,-aire
@@ -142,7 +142,7 @@ dictionnaire,dictionary,-aire
 commentaire,commentary,-aire
 préliminaire,preliminary,-aire
 planétaire,planetary,-aire
-solaire,solar,-aire
+extraordinaire,extraordinary,-aire
 populaire,popular,-aire
 similaire,similar,-aire
 circulaire,circular,-aire
@@ -221,3 +221,15 @@ rigueur,rigor,-eur
 splendeur,splendor,-eur
 moteur,motor,-eur
 générateur,generator,-eur
+santé,health. La finale -té ne s’applique pas.,écart
+côté,side. Pas de -ty.,écart
+été,summer. Pas de -ty.,écart
+heureux,happy. Pas de -ous.,écart
+vieux,old. Pas de -ous.,écart
+ingénieur,engineer. Pas ingenior.,écart
+couleur,color.,écart
+librairie,bookshop. Library se dit bibliothèque.,écart
+actuel,current. Actual veut dire réel.,écart
+éventuellement,possibly. Eventually veut dire finalement.,écart
+envie,envy.,-ie
+nécessaire,necessary. Pas necessairy.,-aire

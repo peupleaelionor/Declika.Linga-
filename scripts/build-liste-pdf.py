@@ -93,7 +93,8 @@ RULES = [
             ("résistance", "resistance"), ("excellence", "excellence"),
         ],
         "gaps": [
-            "fréquence → frequency. urgence → urgency. agence → agency. tendance → tendency.",
+            "fréquence → frequency. agence → agency. tendance → tendency.",
+            "urgence se dit urgency, ou emergency quand c’est la crise.",
             "confiance → confidence. apparence → appearance. correspondance → correspondence.",
             "émergence → emergence (le fait d’apparaître). Emergency, c’est l’urgence-crise.",
             "naissance ne suit pas. Le mot courant est birth.",
@@ -140,7 +141,7 @@ RULES = [
         "gaps": [
             "galerie → gallery. chimie → chemistry. chirurgie → surgery. série → series.",
             "modestie → modesty. hypocrisie → hypocrisy. jalousie → jealousy. pharmacie → pharmacy.",
-            "vie, amie, partie et envie ne suivent pas. famille → family, autre finale. librairie n’est pas library.",
+            "vie, amie et partie ne suivent pas. envie → envy. famille → family, autre finale. librairie n’est pas library.",
         ],
     },
     {
@@ -151,16 +152,17 @@ RULES = [
         "pairs": [
             ("ordinaire", "ordinary"), ("vocabulaire", "vocabulary"), ("salaire", "salary"),
             ("primaire", "primary"), ("secondaire", "secondary"), ("contraire", "contrary"),
-            ("nécessaire", "necessary"), ("militaire", "military"), ("volontaire", "voluntary"),
+            ("parlementaire", "parliamentary"), ("militaire", "military"), ("volontaire", "voluntary"),
             ("temporaire", "temporary"), ("littéraire", "literary"), ("imaginaire", "imaginary"),
             ("élémentaire", "elementary"), ("dictionnaire", "dictionary"), ("commentaire", "commentary"),
-            ("préliminaire", "preliminary"), ("planétaire", "planetary"), ("solaire", "solar"),
+            ("préliminaire", "preliminary"), ("planétaire", "planetary"), ("extraordinaire", "extraordinary"),
             ("populaire", "popular"), ("similaire", "similar"),
             ("circulaire", "circular"), ("culinaire", "culinary"), ("documentaire", "documentary"),
             ("légendaire", "legendary"),
         ],
         "gaps": [
-            "sanitaire → sanitary. honoraire → honorary. humanitaire → humanitarian.",
+            "sanitaire → sanitary. honoraire → honorary. solaire → solar. polaire → polar. Ce n’est pas -ary.",
+            "nécessaire → necessary, pas necessairy. humanitaire → humanitarian.",
             "révolutionnaire → revolutionary. missionnaire → missionary. fragmentaire → fragmentary.",
             "millionnaire → millionaire. milliardaire → billionaire, pas milliardary.",
             "anniversaire n’est pas anniversary dans l’usage courant : c’est souvent birthday.",
@@ -170,7 +172,7 @@ RULES = [
         "fr": "-té",
         "en": "-ty",
         "latin": "Latin -tas, -tatis. Liberté et liberty viennent tous deux de libertatem. La finale française -té et l’anglaise -ty sont le même héritage, pas une astuce d’orthographe.",
-        "how": "Tu remplaces -té par -ty. Tu gardes les lettres du radical : qualité → quality, pas qualty. L’accent tombe.",
+        "how": "Tu remplaces -té par -ty, sans toucher au radical : qualité → quality, pas qualty. cité → city et beauté → beauty : le radical bouge, la famille reste.",
         "pairs": [
             ("liberté", "liberty"), ("qualité", "quality"), ("société", "society"),
             ("activité", "activity"), ("réalité", "reality"), ("identité", "identity"),
@@ -252,6 +254,13 @@ FRIENDS = [
     ("décevoir", "décevoir", "to deceive", "tromper"),
     ("attendre", "patienter", "to attend", "assister à"),
     ("prévenir", "avertir", "to prevent", "empêcher"),
+    ("blesser", "blesser", "to bless", "bénir"),
+    ("stage", "un stage", "stage", "une scène"),
+    ("formidable", "très bien", "formidable", "redoutable"),
+    ("hasard", "le hasard", "hazard", "un danger"),
+    ("monnaie", "la monnaie", "money", "l’argent"),
+    ("journal", "un journal", "journal", "un diary"),
+    ("propre", "propre, ou sien", "proper", "approprié"),
     ("lecture", "le fait de lire", "lecture", "une conférence"),
     ("caution", "une garantie, un dépôt", "caution", "de la prudence"),
     ("avertissement", "un avertissement", "advertisement", "une publicité"),
@@ -306,14 +315,14 @@ READINGS = [
     {
         "title": "Un portrait",
         "text": (
-            "The ambitious professor was famous for his curiosity, his generosity and his rigorous humor. "
-            "He was religious without being furious, serious without being vicious. "
+            "The ambitious professor was famous for his curiosity, his generosity and his rigor. "
+            "He was religious without being furious, and serious without being vicious. "
             "His personality united liberty of judgment and a capacity for silence. "
-            "Students called him judicious. They did not call him happy: heureux would have been the wrong rule."
+            "Students called him judicious. Happy does not come from heureux."
         ),
         "hits": [
             ("ambitious", "-eux"), ("professor", "-eur"), ("famous", "-eux"),
-            ("curiosity", "-té"), ("generosity", "-té"), ("rigorous", "latin -osus"),
+            ("curiosity", "-té"), ("generosity", "-té"), ("rigor", "-eur"),
             ("religious", "-eux"), ("furious", "-eux"), ("serious", "-eux"),
             ("vicious", "-eux"), ("personality", "-té"), ("liberty", "-té"),
             ("capacity", "-té"), ("silence", "-ence"), ("judicious", "-eux"),
@@ -428,7 +437,7 @@ class Paper(FPDF):
         self.set_font("Sans", "B", 8.5)
         self.set_text_color(*NAVY)
         self.set_xy(14, y)
-        self.cell(182, 5, "ÉCARTS  ·  NE PAS FORCER LA FINALE")
+        self.cell(182, 5, "PRÉCISIONS  ·  LA RÈGLE TIENT, OU ELLE S’ARRÊTE")
         self.set_y(y + 5.5)
         self.set_font("Sans", "", 9)
         self.set_text_color(*MUTED)
@@ -641,16 +650,16 @@ def build_formation():
     pdf.prose("Une page, une finale. Tu lis le rappel. Tu caches le bas du document. Tu écris l’anglais. Ensuite seulement, tu ouvres le corrigé.")
     pdf.prose("Si tu hésites entre deux finales, tu choisis la plus haute dans la liste : -tion avant -té, -ique avant une invention. L’écart se vérifie dans la liste complète, pas de mémoire.")
     exercises = [
-        ("-tion → -tion", ["solution", "révolution", "protection", "génération", "institution", "définition", "population", "motivation"]),
-        ("-isme → -ism", ["socialisme", "féminisme", "mécanisme", "organisme", "modernisme", "pragmatisme", "cubisme", "héroïsme"]),
-        ("-iste → -ist", ["économiste", "violoniste", "biologiste", "touriste", "idéaliste", "linguiste", "chimiste", "terroriste"]),
-        ("-ance / -ence", ["évidence", "existence", "résistance", "excellence", "intelligence", "conséquence", "conférence", "silence"]),
-        ("-ique → -ic", ["électronique", "dramatique", "systématique", "identique", "organique", "ironique", "automatique", "poétique"]),
-        ("-ie → -y", ["philosophie", "géométrie", "stratégie", "tragédie", "démocratie", "mélodie", "ironie", "anatomie"]),
-        ("-aire → -ary / -ar", ["temporaire", "imaginaire", "élémentaire", "dictionnaire", "populaire", "similaire", "circulaire", "légendaire"]),
-        ("-té → -ty", ["identité", "sécurité", "responsabilité", "curiosité", "diversité", "quantité", "beauté", "égalité"]),
-        ("-eux → -ous", ["mystérieux", "ambitieux", "délicieux", "courageux", "judicieux", "harmonieux", "victorieux", "prestigieux"]),
-        ("-eur → -or", ["spectateur", "inventeur", "ambassadeur", "inspecteur", "honneur", "vigueur", "erreur", "générateur"]),
+        ("-tion → -tion", ["solution", "révolution", "protection", "génération", "institution", "définition", "population", "organisation"]),
+        ("-isme → -ism", ["socialisme", "féminisme", "mécanisme", "organisme", "modernisme", "pragmatisme", "cubisme", "romantisme"]),
+        ("-iste → -ist", ["économiste", "violoniste", "biologiste", "touriste", "idéaliste", "linguiste", "chimiste", "scientifique"]),
+        ("-ance / -ence", ["évidence", "existence", "résistance", "excellence", "intelligence", "conséquence", "conférence", "fréquence"]),
+        ("-ique → -ic", ["électronique", "dramatique", "systématique", "identique", "organique", "ironique", "automatique", "économique"]),
+        ("-ie → -y", ["philosophie", "géométrie", "stratégie", "tragédie", "démocratie", "mélodie", "ironie", "chimie"]),
+        ("-aire → -ary / -ar", ["temporaire", "imaginaire", "élémentaire", "dictionnaire", "populaire", "similaire", "circulaire", "nécessaire"]),
+        ("-té → -ty", ["identité", "sécurité", "responsabilité", "curiosité", "diversité", "quantité", "beauté", "santé"]),
+        ("-eux → -ous", ["mystérieux", "ambitieux", "délicieux", "courageux", "judicieux", "harmonieux", "victorieux", "heureux"]),
+        ("-eur → -or", ["spectateur", "inventeur", "ambassadeur", "inspecteur", "honneur", "vigueur", "erreur", "ingénieur"]),
     ]
     for index, (title, words) in enumerate(exercises, start=1):
         pdf.add_page()
@@ -675,35 +684,22 @@ def build_formation():
             pdf.set_draw_color(207, 212, 222)
             pdf.line(100, y + 8, 190, y + 8)
             pdf.set_y(y + 11)
-        traps = [
-            "Écart fréquent : organisation s’écrit organization en américain.",
-            "Écart fréquent : romantisme → romanticism, pas romantism.",
-            "Écart fréquent : scientifique, le nom, → scientist.",
-            "Écart fréquent : fréquence → frequency, pas frequence.",
-            "Écart fréquent : économique → economic, pas economical.",
-            "Écart fréquent : chimie → chemistry, pas chimy.",
-            "Écart fréquent : populaire → popular, pas populary.",
-            "Écart fréquent : qualité → quality. Le a du radical reste.",
-            "Écart fréquent : heureux ne devient pas heureous.",
-            "Écart fréquent : ingénieur → engineer, pas ingenior.",
-        ]
-        pdf.ln(2)
-        pdf.muted(traps[index - 1])
+        pdf.ln(1)
 
     pdf.add_page()
     pdf.h1("Corrigé")
-    pdf.muted("Le mot anglais attendu. « Écart » signale une finale qui ne se colle pas telle quelle : le détail est dans la liste.")
+    pdf.muted("Le mot anglais attendu. Quand la finale ne suffit pas, la réponse le dit.")
     answers = [
-        ["solution", "revolution", "protection", "generation", "institution", "definition", "population", "motivation"],
-        ["socialism", "feminism", "mechanism", "organism", "modernism", "pragmatism", "cubism", "heroism"],
-        ["economist", "violinist", "biologist", "tourist", "idealist", "linguist", "chemist", "terrorist"],
-        ["evidence", "existence", "resistance", "excellence", "intelligence", "consequence", "conference", "silence"],
-        ["electronic", "dramatic", "systematic", "identical", "organic", "ironic", "automatic", "poetic"],
-        ["philosophy", "geometry", "strategy", "tragedy", "democracy", "melody", "irony", "anatomy"],
-        ["temporary", "imaginary", "elementary", "dictionary", "popular", "similar", "circular", "legendary"],
-        ["identity", "security", "responsibility", "curiosity", "diversity", "quantity", "beauty", "equality"],
-        ["mysterious", "ambitious", "delicious", "courageous", "judicious", "harmonious", "victorious", "prestigious"],
-        ["spectator", "inventor", "ambassador", "inspector", "honor", "vigor", "error", "generator"],
+        ["solution", "revolution", "protection", "generation", "institution", "definition", "population", "organization"],
+        ["socialism", "feminism", "mechanism", "organism", "modernism", "pragmatism", "cubism", "romanticism"],
+        ["economist", "violinist", "biologist", "tourist", "idealist", "linguist", "chemist", "scientist"],
+        ["evidence", "existence", "resistance", "excellence", "intelligence", "consequence", "conference", "frequency"],
+        ["electronic", "dramatic", "systematic", "identical", "organic", "ironic", "automatic", "economic, pas economical"],
+        ["philosophy", "geometry", "strategy", "tragedy", "democracy", "melody", "irony", "chemistry"],
+        ["temporary", "imaginary", "elementary", "dictionary", "popular", "similar", "circular", "necessary"],
+        ["identity", "security", "responsibility", "curiosity", "diversity", "quantity", "beauty", "health, pas -ty"],
+        ["mysterious", "ambitious", "delicious", "courageous", "judicious", "harmonious", "victorious", "happy, pas -ous"],
+        ["spectator", "inventor", "ambassador", "inspector", "honor", "vigor", "error", "engineer"],
     ]
     for index, (title, words) in enumerate(exercises):
         if pdf.get_y() > 250:
@@ -734,7 +730,7 @@ def build_bonus():
         pdf,
         "BONUS  ·  PACK COMPLET",
         "Le mot juste,\npas le mot proche.",
-        "Vingt-deux faux amis, puis trois lectures où les finales se rencontrent. "
+        "Vingt-huit faux amis, puis trois lectures où les finales se rencontrent. "
         "Inclus dans le pack. Pas vendu à part.",
     )
     pdf.add_page()
@@ -820,18 +816,66 @@ def build_bonus():
 
 
 def build_carnet():
+    import genanki
+
     def cell(value: str) -> str:
         if any(mark in value for mark in ",\"\n"):
             return '"' + value.replace('"', '""') + '"'
         return value
 
+    traps = [
+        ("santé", "health. La finale -té ne s’applique pas.", "écart"),
+        ("côté", "side. Pas de -ty.", "écart"),
+        ("été", "summer. Pas de -ty.", "écart"),
+        ("heureux", "happy. Pas de -ous.", "écart"),
+        ("vieux", "old. Pas de -ous.", "écart"),
+        ("ingénieur", "engineer. Pas ingenior.", "écart"),
+        ("couleur", "color.", "écart"),
+        ("librairie", "bookshop. Library se dit bibliothèque.", "écart"),
+        ("actuel", "current. Actual veut dire réel.", "écart"),
+        ("éventuellement", "possibly. Eventually veut dire finalement.", "écart"),
+        ("envie", "envy.", "-ie"),
+        ("nécessaire", "necessary. Pas necessairy.", "-aire"),
+    ]
+
     rows = ["Français,Anglais,Règle"]
+    notes = []
     for rule in RULES:
         for french, english in rule["pairs"]:
             rows.append(",".join(cell(part) for part in (french, english, rule["fr"])))
-    path = OUT / "Declika-Carnet.csv"
-    path.write_text("\n".join(rows) + "\n", encoding="utf-8")
-    print(path, path.stat().st_size, "cartes", len(rows) - 1)
+            notes.append((french, english, rule["fr"]))
+    for french, english, rule in traps:
+        rows.append(",".join(cell(part) for part in (french, english, rule)))
+        notes.append((french, english, rule))
+
+    csv_path = OUT / "Declika-Carnet.csv"
+    csv_path.write_text("\n".join(rows) + "\n", encoding="utf-8")
+
+    model = genanki.Model(
+        1607392321,
+        "Declika",
+        fields=[{"name": "Français"}, {"name": "Anglais"}, {"name": "Règle"}],
+        templates=[
+            {
+                "name": "Français → anglais",
+                "qfmt": '<div class="rule">{{Règle}}</div><div class="word">{{Français}}</div>',
+                "afmt": '{{FrontSide}}<hr id="answer"><div class="answer">{{Anglais}}</div>',
+            }
+        ],
+        css=(
+            ".card{font-family:Helvetica,Arial,sans-serif;background:#FAFAFA;color:#0A1128;text-align:center;padding:28px;}"
+            ".rule{font-size:14px;letter-spacing:.04em;color:#445066;}"
+            ".word{font-size:36px;font-weight:600;margin-top:18px;}"
+            ".answer{font-size:28px;margin-top:8px;}"
+        ),
+    )
+    deck = genanki.Deck(2059400112, "Declika — Cognats")
+    for french, english, rule in notes:
+        deck.add_note(genanki.Note(model=model, fields=[french, english, rule], tags=[rule.replace(" ", "_")]))
+    apkg = OUT / "Declika-Carnet.apkg"
+    genanki.Package(deck).write_to_file(apkg)
+    print(csv_path, csv_path.stat().st_size, "cartes", len(notes))
+    print(apkg, apkg.stat().st_size)
 
 
 if __name__ == "__main__":

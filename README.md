@@ -25,11 +25,11 @@ Dans Stripe, pour chaque Payment Link :
 | Offre | Fichier à joindre |
 | --- | --- |
 | Liste PDF | `deliverables/Declika-Liste-Complete.pdf` |
-| Carnet Anki / Quizlet | `deliverables/Declika-Carnet.csv` |
+| Carnet Anki / Quizlet | `deliverables/Declika-Carnet.apkg` et `deliverables/Declika-Carnet.csv` |
 | Mini-formation | `deliverables/Declika-Mini-formation.pdf` |
 | Pack | les trois fichiers ci-dessus, plus `deliverables/Declika-Bonus.pdf` |
 
-Anki : Fichier → Importer, séparateur virgule, colonnes Français / Anglais / Règle. Quizlet : importer le même CSV.
+Anki : ouvrir le `.apkg`. Quizlet : importer le CSV, séparateur virgule, colonnes Français / Anglais / Règle.
 
 Coller l’URL du Payment Link dans Vercel, pas dans le code. Redéployer après avoir ajouté les variables : Vite les lit au moment du build.
 

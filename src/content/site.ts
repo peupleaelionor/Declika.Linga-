@@ -87,7 +87,7 @@ export const products = [
     eyebrow: "Meilleure offre",
     title: "Pack complet",
     description:
-      "La liste, 222 cartes, la formation, et le bonus faux amis. Quatre fichiers, un seul paiement.",
+      "La liste, 234 cartes, la formation, et le bonus faux amis. Quatre fichiers, un seul paiement.",
     benefits: [
       "Tout ce que Declika vend, bonus compris",
       "Le bonus n’est pas vendu seul",
@@ -104,10 +104,10 @@ export const products = [
     eyebrow: "Révision",
     title: "Carnet Anki / Quizlet",
     description:
-      "222 cartes, les mêmes paires que la liste, dans un fichier CSV. Tu l’importes dans Anki ou dans Quizlet.",
+      "234 cartes : un paquet Anki, et le même fichier CSV pour Quizlet. Les écarts sont marqués, pour ne pas réviser une fausse règle.",
     benefits: [
-      "Colonnes Français, Anglais, Règle",
-      "Le même fichier pour Anki et pour Quizlet",
+      "Un paquet Anki (.apkg), à ouvrir directement",
+      "Les mêmes cartes pour Quizlet, en CSV",
       "Classées par finale, pas par ordre alphabétique",
     ],
     price: prices.anki,
@@ -165,7 +165,7 @@ export const faq = [
   },
   {
     q: "Le carnet reprend-il le PDF ?",
-    a: "Oui. 222 paires, les mêmes que la liste, dans un CSV. Anki : Fichier, Importer, séparateur virgule. Quizlet : importer ce même fichier. Le PDF explique. Le carnet répète.",
+    a: "Oui. 234 cartes : les paires de la liste, plus les écarts qui ne suivent pas la finale. Le fichier .apkg s’ouvre dans Anki. Le CSV s’importe dans Quizlet, séparateur virgule. Le PDF explique. Le carnet répète.",
   },
   {
     q: "Que couvre la mini-formation ?",

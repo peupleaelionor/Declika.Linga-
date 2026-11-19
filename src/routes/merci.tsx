@@ -20,7 +20,7 @@ function Merci() {
         </p>
         <ul className="mt-10 space-y-3 text-pretty">
           <li>Liste : un PDF de 17 pages.</li>
-          <li>Carnet : un CSV, 222 cartes. Anki : Fichier, Importer, séparateur virgule.</li>
+          <li>Carnet : un paquet Anki (.apkg) et un CSV, 234 cartes.</li>
           <li>Formation : un PDF de 15 pages. Le corrigé est à la fin.</li>
           <li>Pack : ces trois fichiers, plus le bonus faux amis.</li>
         </ul>
